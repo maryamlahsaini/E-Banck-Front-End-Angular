@@ -1,0 +1,68 @@
+<app-menu></app-menu>
+<div class="container">
+  <div class="panel panel-primary" style="background-color:rgba(115,88,255,0.15);">
+
+    <div class="panel-heading">Ajouter  Client </div>
+    <div class="panel-body">
+      <div style="width: 400px;background-color:rgba(115,88,255,0.15);">
+        <form >
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" [(ngModel)]="client.nom" class="form-control" id="nom" name="Nom">
+          </div>
+
+          <div class="form-group">
+            <label for="prenom">Prenom</label>
+            <input type="text" [(ngModel)]="client.prenom" class="form-control" id="prenom" name="Prenom">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text"[(ngModel)]="client.email" class="form-control" id="email" required name="Email">
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"[(ngModel)]="client.username" class="form-control" id="username" required name="Username">
+          </div>
+          <div class="form-group">
+            <label for="username">Password</label>
+            <input type="password"[(ngModel)]="client.password" class="form-control" id="password" required name="Password">
+          </div>
+          <div class="form-group">
+            <label for="username">telephone</label>
+            <input type="text"[(ngModel)]="client.tel" class="form-control" id="telephone" required name="Telephone">
+          </div>
+
+
+
+          <button  type="button"   class="btn btn-success  btn-lg" data-toggle="modal" data-target="#myModal2" (click)="OnCreateClient()">Submit</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ajout d'un client </h4>
+        </div>
+        <div class="modal-body">
+          <p>{{add}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" routerLink="/client/comptes">Voir La Liste des clients</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+

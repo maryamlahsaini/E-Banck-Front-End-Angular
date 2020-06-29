@@ -1,0 +1,77 @@
+<app-menu></app-menu>
+<div class="container">
+  <div class="panel panel-primary" style="background-color:rgba(115,88,255,0.15);">
+    <div class="panel-heading">Gerer les Libelles</div>
+    <div class="panel-body">
+      <div *ngIf="Libelles" class="table table-striped" >
+        <div>
+          <form >
+            <div></div>
+            <div class="form-group">
+              <label for="banqueTitre">Titre Du Banque</label>
+              <input type="text" [(ngModel)]="Libelles.banqueTitre" class="form-control" id="banqueTitre" name="banqueTitre">
+            </div>
+            <div class="form-group">
+              <label for="agenceTitre">Message de Modifier Agent</label>
+              <input type="text" [(ngModel)]="Libelles.agenceTitre" class="form-control" id="agenceTitre" name="agenceTitre">
+            </div>
+
+            <div class="form-group">
+              <label for="messageClientVirement">Message Virement</label>
+              <input type="text" [(ngModel)]="Libelles.messageClientVirement" class="form-control" id="messageClientVirement" name="messageClientVirement">
+            </div>
+            <div class="form-group">
+              <label for="messageClientVirsement">Message Versement </label>
+              <input type="text"  [(ngModel)]="Libelles.messageClientVirsement" class="form-control" id="messageClientVirsement" name="messageClientVirsement">
+            </div>
+            <div class="form-group">
+              <label for="messageClientRetrait">Message Retrait</label>
+              <input type="text"[(ngModel)]="Libelles.messageClientRetrait" class="form-control" id="messageClientRetrait" name="messageClientRetrait">
+            </div>
+            <div class="form-group">
+              <label for="messageAgentAddClient">Message Ajouter Client</label>
+              <input type="text" [(ngModel)]="Libelles.messageAgentAddClient" class="form-control" id="messageAgentAddClient" name="messageAgentAddClient">
+            </div>
+            <div class="form-group">
+              <label for="messageAgentDeleteClient">Message Supprimer Client</label>
+              <input type="text" [(ngModel)]="Libelles.messageAgentDeleteClient" class="form-control" id="messageAgentDeleteClient" name="messageAgentDeleteClient">
+            </div>
+            <div class="form-group">
+              <label for="messageAgentUpdateClient">Message Modifier Compte</label>
+              <input type="text" [(ngModel)]="Libelles.messageAgentUpdateClient" class="form-control" id="messageAgentUpdateClient" name="messageAgentUpdateClient">
+            </div>
+            <div class="form-group">
+              <label for="messageAgentBloqueClient">Message Suppression Agent</label>
+              <input type="text" [(ngModel)]="Libelles.messageAgentBloqueClient" class="form-control" id="messageAgentBloqueClient" name="messageAgentBloqueClient">
+            </div>
+            <div class="form-group">
+              <label for="messageAgentdeBloqueClient">Message d'operateur de recharge</label>
+              <input type="text" [(ngModel)]="Libelles.messageAgentdeBloqueClient" class="form-control" id="messageAgentdeBloqueClient" name="messageAgentdeBloqueClient">
+            </div>
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" (click)="onEditLibelle()">Modifier</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modification</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vous avez modifier les libelles  </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="Onreload()">Fermer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

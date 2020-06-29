@@ -1,0 +1,33 @@
+<header>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <i class="glyphicon-log-in" href="#"><img src="../assets/images/logo.png" height="45" width="120"/></i>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class=""><a routerLink="/home" routerLinkActive="Active">Home</a></li>
+        <li *ngIf="authority === 'admin'" class="nav-item">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin Board<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/agents" routerLinkActive="Active">Gerer les Agents</a></li>
+            <li><a routerLink="/parameters" routerLinkActive="Active">Gerer les Parametres</a></li>
+            <li><a routerLink="/libelles" routerLinkActive="Active">Gerer les Libelles</a></li>
+            <li><a routerLink="/agence" routerLinkActive="Active">Gerer les agences</a></li>
+          </ul>
+        </li>
+        <li *ngIf="!authority" class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+
+        <li *ngIf="authority === 'client'" ><a routerLink="/clients"  routerLinkActive="Active">Client space</a></li>
+        <li *ngIf="authority === 'client'" ><a routerLink="/Operateur" routerLinkActive="active">Recharger </a></li>
+        <li *ngIf="authority === 'agent'"  ><a routerLink="/client/comptes" routerLinkActive="active">Agent Space</a></li>
+        <li *ngIf="authority === 'agent'" ><a routerLink="/operation" routerLinkActive="active">Operation Space</a></li>
+        <li *ngIf="isLoggedIn" ><a  routerLink="/logout" routerLinkActive="active" > Logout</a></li>
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+

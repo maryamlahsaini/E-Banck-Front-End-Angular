@@ -1,0 +1,19 @@
+<app-menu ></app-menu>
+
+<div class="container">
+
+  <div  style="background-color:rgba(115,88,255,0.15); width: 1200px " >
+    <img src="../assets/images/imagebanque.PNG" height="350" width="1200"/>
+  </div>
+  <div class="col-md-10 col-md-offset-4 col ">  <span>  <h1 > Welcome to {{Parameters}}</h1> </span> </div>
+  <!--  <div > <span><p> la banque en ligne a su prendre sa place dans les produits financiers et permet de nos jours à des millions de pouvoir effectuer leurs opérations en temps réel sans devoir se soucier d’un rendez-vous couteux et pas souvent apprécié avec son banquier afin d’effectuer les opérations courantes.</p></span></div> -->
+  <div *ngIf="authority === 'admin'" > <div style="font-family: Verdana">Vous  aurez la possibilité de créer une nouvelle agence ainsi de gérer les agents.
+    Ainsi que de contrôler les paramètres globales de l’application compris (Les précisons de solde,
+    ainsi de contrôler les libellés des statuts des clients et leurs contrats ….). </div> </div>
+  <div *ngIf="authority === 'client'" > <div style="font-family: Verdana">Vous pouvez accéder a votre compte où vouz aurez la possibilité de visualiser vos
+    Comptes et son solde. Ainsi que d’effectuer des virements en choisissant le numéro
+    de compte de bénéficiaires , vous pouvez aussi effectuer les recharges téléphoniques.</div>  </div>
+  <div *ngIf="authority === 'agent'" >  <div style="font-family: Verdana">Vous pouvez accéder à votre propre espace afin d’enrôler des
+    nouveaux clients ou bien de résilier un client déjà enrôlés, ainsi que de gérer les abonnes, et vouz pouvez aussi
+    soit activer ou suspendre ou lever la suspendu d’un client.</div></div>
+</div>

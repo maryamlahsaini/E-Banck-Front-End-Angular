@@ -1,0 +1,57 @@
+<app-menu></app-menu>
+<div class="container">
+  <div class="panel panel-primary" style="background-color:rgba(115,88,255,0.15);">
+    <div class="panel-heading">Effectuer une recharge   </div>
+    <div class="panel-body">
+      <div *ngIf="Compte" class="table table-striped" >
+        <div>
+          <form >
+            <div class="form-group">
+              <label for="operateur">Choisir l'operateur</label>
+              <select id="operateur" [(ngModel)]="operateur" name="operateur">
+                <option value="Orange">Orange</option>
+                <option value="Inwi">Inwi</option>
+                <option value="Maroc Telecome">Maroc Telecome</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="numero">Saisir une numéro</label>
+              <input type="text" [(ngModel)]="numero" class="form-control" id="numero" name="numero">
+            </div>
+            <div class="form-group">
+              <label for="montant">Saisir le montant</label>
+              <input type="text" [(ngModel)]="montant" class="form-control" id="montant" name="montant">
+            </div>
+            <div class="form-group">
+              <label for="Compte">Choisir le Compte</label>
+              <select [(ngModel)]="Comptetest"  name="pets" id="Compte">
+                <option>--Choisir un Compte--</option>
+                <option *ngFor="let a of Compte" [value]="a.code">{{a.code}}</option>
+              </select>
+            </div>
+            <button type="button"   class="btn btn-success  btn-lg" data-toggle="modal" data-target="#myModal" (click)="onRecharge()">Valider</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Recharge </h4>
+        </div>
+        <div class="modal-body">
+          <p>{{operateurmessg}} </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="Onreload()">Fermer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

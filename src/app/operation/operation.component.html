@@ -1,0 +1,140 @@
+<app-menu></app-menu>
+<div class="container">
+  <div class="panel panel-primary" style="background-color:rgba(115,88,255,0.15);">
+
+    <div class="panel-heading"> Operations  </div>
+    <div class="panel-body">
+      <div class="panel-body ">
+        <p>Versement</p>
+        <table *ngIf="Comptes && Agents" class="table table-striped" style="background-color:rgba(115,88,255,0.15);">
+          <tr>   <th>  Compte beneficiaire </th><th> Montant  </th></tr>
+          <tr  >
+
+            <td>
+              <select [(ngModel)]="selectedcompte"  >
+                <option>--Choisir un Compte--</option>
+                <option *ngFor="let c of Comptes" [value]="c.code"  >{{c.code}}</option>
+              </select>
+            </td>
+            <td><input required type="text"  [(ngModel)]="montant"></td>
+
+            <td>
+              <button type="button"  class="btn btn-danger  btn-lg" data-toggle="modal" data-target="#myModal" (click)="versement(selectedcompte , montant)" style="background-color: rgba(255,90,20,0.15)">Versement</button>
+
+            </td>
+
+          </tr>
+        </table>
+
+
+      </div>
+      <div class="panel-body ">
+        <p>Retrait</p>
+        <table *ngIf="Comptes && Agents " class="table table-striped" style="background-color:rgba(115,88,255,0.15);">
+          <tr>   <th>  Compte beneficiaire </th><th> Montant  </th></tr>
+          <tr  >
+
+            <td>
+              <select [(ngModel)]="selectedcompte2"  >
+                <option>--Choisir un Compte--</option>
+                <option *ngFor="let cp of Comptes" [value]="cp.code"  >{{cp.code}}</option>
+              </select>
+            </td>
+            <td><input required type="text"  [(ngModel)]="montant2"></td>
+
+            <td>
+              <button  type="button"  class="btn btn-danger  btn-lg" data-toggle="modal" data-target="#myModal2"  (click)="retrait(selectedcompte2 , montant2 )" style="background-color:  rgba(255,90,20,0.15)">Retrait</button>
+            </td>
+
+          </tr>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+  <div class="panel panel-primary" style="background-color:rgba(115,88,255,0.15);">
+
+    <div class="panel-heading"> Convertions   </div>
+    <div class="panel-body">
+
+      <div class="panel-body ">
+
+        <table  class="table table-striped" style="background-color:rgba(115,88,255,0.15);">
+          <tr  >
+            <td><input required type="text"  [(ngModel)]="eurotodh"></td>
+            <td>
+              <button class="btn " (click)="onEuroToDh()" style="background-color: rgba(255,90,20,0.15)">ConvertEuroToDh</button>
+            </td>
+            <td *ngIf="resultETD"> montant  en Dh:<input required type="text"  [(ngModel)]="resultETD"></td>
+          </tr>
+          <tr  >
+            <td><input required type="text"  [(ngModel)]="dhtoeuro"></td>
+            <td>
+              <button class="btn " (click)="onDhToEuro()" style="background-color: rgba(255,90,20,0.15)">ConvertDhToEuro</button>
+            </td>
+            <td *ngIf="resultDTE">montan en Euro <input required type="text"  [(ngModel)]="resultDTE"></td>
+          </tr>
+          <tr  >
+            <td><input required type="text"  [(ngModel)]="dolartodh"></td>
+            <td>
+              <button class="btn " (click)="onDolarToDh()" style="background-color: rgba(255,90,20,0.15)">ConvertDolarToDh</button>
+            </td>
+            <td *ngIf="resultDOtD"> montant en Dh<input required type="text"  [(ngModel)]="resultDOtD"></td>
+          </tr>
+          <tr  >
+            <td><input required type="text"  [(ngModel)]="dhtodolar"></td>
+            <td>
+              <button class="btn " (click)="onDhToDolar()" style="background-color: rgba(255,90,20,0.15)">ConvertDhToDolar</button>
+            </td>
+            <td *ngIf="resultDtDO"> montant en Dolar<input required type="text"  [(ngModel)]="resultDtDO"></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Retrait </h4>
+        </div>
+        <div class="modal-body">
+          <p>{{ret}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="Onreload()">Fermer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Versement  </h4>
+        </div>
+        <div class="modal-body">
+          <p>{{vir}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="Onreload()">Fermer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

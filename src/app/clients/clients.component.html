@@ -1,0 +1,81 @@
+<app-menu></app-menu>
+<div class="container">
+  <div class="panel panel-primary" style="background-color:rgba(115,88,255,0.15);">
+
+    <div class="panel-heading"> Espace de  clients </div>
+
+    <div class="panel-body ">
+      <p>Virement</p>
+      <table *ngIf="Comptesclient1" class="table table-striped" style="background-color:rgba(115,88,255,0.15);">
+        <tr>
+
+          <th>compte courant </th> <th> Montant </th> <th>compte beneficiaire </th>
+        </tr>
+        <tr  >
+
+          <td >
+            <select [(ngModel)]="selectedcompteVir3"  name="pets" >
+              <option>--Choisir votre compte--</option>
+              <option *ngFor="let c of Comptesclient1" [value]="c.code" [selected]="true" >{{c.code}}</option>
+            </select>
+          </td>
+          <td><input required type="text"  [(ngModel)]="montant"></td>
+          <td>
+            <select [(ngModel)]="selectedcompteVir31"  name="pets" >
+              <option>--Choisir compte de beneficiaire--</option>
+              <option *ngFor="let a of Comptes" [value]="a.code" >{{a.code}}</option>
+            </select>
+          </td>
+          <td>
+            <button type="button"  class="btn btn-danger  btn-lg" data-toggle="modal" data-target="#myModal"  (click)="virement(selectedcompteVir3 ,selectedcompteVir31 ,montant)" style="background-color:  rgba(255,90,20,0.15)">Virement</button>
+          </td>
+
+        </tr>
+      </table>
+
+    </div>
+    <div class="panel-body ">
+      <table>
+        <tr>
+          <td>  </td>
+          <td> <button type="button"  class="btn btn-danger  btn-lg" (click)="onvalider()" style="background-color:  rgba(255,90,20,0.15)">Voir vous comptes </button></td>
+        </tr>
+      </table>
+      <table class="table table-striped" *ngIf="Comptesclient"  style="background-color:rgba(115,88,255,0.15);">
+        <th>Code  </th><th>Solde </th>
+        <tr *ngFor="let a of Comptesclient">
+          <td>   {{a.code}}</td>
+          <td>   {{a.solde}}</td>
+
+
+        </tr>
+
+      </table>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Virement </h4>
+        </div>
+        <div class="modal-body">
+          <p>{{ver}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="Onreload()">Fermer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<router-outlet>
+
+</router-outlet>
+

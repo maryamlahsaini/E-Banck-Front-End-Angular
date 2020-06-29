@@ -1,0 +1,179 @@
+<app-menu></app-menu>
+<div class="container">
+  <div class="panel panel-primary" style="background-color:rgba(115,88,255,0.15);">
+
+    <div class="panel-heading"> Espace des Agents </div>
+    <div class="panel-body">
+
+
+      <div class="panel-body ">
+        <div><p> Liste des comptes </p></div>
+        <table *ngIf="comptes" class="table table-striped" style="background-color:rgba(115,88,255,0.15);">
+          <tr style="background-color:rgba(115,88,255,0.15);">
+            <th>Code </th>  <th>solde </th> <th>client </th> <th>datecreation </th> <th> Operation </th>
+          </tr>
+
+          <tr *ngFor="let c of comptes  ">
+            <td> {{c.code}}</td>
+
+            <td> {{c.solde}}</td>
+            <td>{{c.client.nom}}</td>
+            <td> {{c.datecreation}}</td>
+
+            <td>  <button type="button"  class="btn btn-danger  btn-lg" data-toggle="modal" data-target="#myModal1"  (click)="onDeleteCompte(c.code)" style="background-color:  rgba(255,90,20,0.15)">Supprimer</button></td>
+
+          </tr>
+        </table>
+
+      </div>
+      <!--  <div class="panel-body">
+          <table *ngIf="Compte" class="table table-striped" >
+            <tr>
+              <th>type</th><th>solde</th>
+            </tr>
+            <tr>
+              <td><input required type="text" [(ngModel)]="compte.code"></td>
+              <td><input required type="text" [(ngModel)]="compte.type"></td>
+              <td><input required type="text" [(ngModel)]="compte.solde"></td>
+              <td>
+                <button class="btn btn-success" (click)="onValider()">Valider</button>
+              </td>
+            </tr>
+          </table>
+        </div> -->
+    </div>
+    <div class="panel-body">
+
+
+      <div class="panel-body ">
+        <div><p> Liste des clients </p></div>
+        <table *ngIf="Clients" class="table table-striped" style="background-color:rgba(115,88,255,0.15);">
+          <tr style="background-color:rgba(115,88,255,0.15);">
+            <th>Nom  </th> <th>Prenom </th>  <th>Tel  </th>  <th>Email  </th> <th>Username  </th> <th>Operation </th>
+          </tr>
+
+          <tr *ngFor="let c of Clients ">
+
+            <td> {{c.nom}}</td>
+            <td> {{c.prenom}}</td>
+            <td>{{c.tel}}</td>
+            <td> {{c.email}}</td>
+            <td> {{c.username}}</td>
+            <td>
+              <button class="btn btn-danger  btn-lg " (click)="onEditClient(c.code)" style="background-color: rgba(255,90,20,0.15)">Voir Client</button>
+              <button type="button"  class="btn btn-danger  btn-lg" data-toggle="modal" data-target="#myModal" (click)="onDeleteClient(c.code)" style="background-color:  rgba(255,90,20,0.15)">Supprimer</button>
+            </td>
+
+
+
+          </tr>
+        </table>
+
+      </div>
+      <div class="panel-body">
+        <table *ngIf="Client" class="table table-striped" >
+          <tr>
+            <th>code</th>
+          </tr>
+          <tr>
+            <td><input required type="text"  [(ngModel)]="client.code"><br> </td>
+          </tr>
+          <tr> <th>nom</th></tr>
+
+          <tr> <td><input required type="text" [(ngModel)]="client.nom"></td></tr>
+          <tr><th>prenom</th></tr>
+          <tr>  <td><input required type="text" [(ngModel)]="client.prenom"></td></tr>
+          <tr><th>username</th></tr>
+          <tr> <td><input required type="text" [(ngModel)]="client.username"></td></tr>
+          <tr><th>email</th></tr>
+          <tr> <td><input required type="text" [(ngModel)]="client.email"></td></tr>
+          <tr><th>Comptes</th></tr>
+          <tr>
+            <td>
+              <select [(ngModel)]="Compte"  name="pets" id="pet-select">
+                <option>--Choisir une Compte--</option>
+                <option *ngFor="let a of Compte" [value]="a.code">{{a.code}}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="button"   class="btn btn-success  btn-lg" data-toggle="modal" data-target="#myModal2" (click)="onValide()">Valider</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <button class="btn btn-primary" routerLink="new-client">Ajouter Client</button>
+      </div>
+      <br>
+      <div>
+        <button class="btn btn-primary" routerLink="new-compte">Ajouter Compte</button>
+      </div>
+
+    </div>
+  </div>
+  <div id="myModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Suppression</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vous avez Supprimer un compte</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="Onreload()">Fermer</button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Suppression</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{delete}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="Onreload()">Fermer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modification</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{edit}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="Onreload()">Voir La Liste des Comptes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<router-outlet>
+
+</router-outlet>
